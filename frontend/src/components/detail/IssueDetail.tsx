@@ -121,8 +121,9 @@ export function IssueDetail() {
           timestamp: new Date(),
         }
       });
-    } catch (error) {
+    } catch (error: any) {
       console.error('PR push failed:', error);
+      const errorMessage = error.response?.data?.error || error.message || 'Unknown error';
       dispatch({ type: 'PUSH_COMPLETE' });
       
       // Bob's error response
@@ -131,7 +132,7 @@ export function IssueDetail() {
         payload: {
           id: (Date.now() + 1).toString(),
           role: 'bob',
-          content: `PR creation failed.\n\nPlease check:\n- GitHub token permissions\n- Write access to the repository\n- Network connection\n\nI can help you:\n1. Show how to create the PR manually\n2. Generate PR description for copy-paste\n3. Troubleshoot the connection`,
+          content: `PR creation failed: **${errorMessage}**\n\nPlease check:\n- Your GitHub token has 'repo' permissions\n- You have permission to fork/edit the repository\n- The repository hasn't been deleted\n\nI can also generate the PR description for you to copy-paste manually if needed!`,
           timestamp: new Date(),
         }
       });
