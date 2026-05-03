@@ -6,6 +6,9 @@ https://devdriftguard-ibm-bob.onrender.com/
 
 **Transform Technical Debt from an Invisible Burden into a Managed Asset**
 
+### Do NOT SCAN LARGE REPO BECAUSE WE USE THE RENDER FREE TIER SERVER FOR THE BACKEND AND IT WILL CRASH AS A RESULT
+
+
 [![Made with IBM Bob](https://img.shields.io/badge/Made%20with-IBM%20Bob-0f62fe?style=for-the-badge&logo=ibm)](https://www.ibm.com)
 [![NVIDIA AI](https://img.shields.io/badge/Powered%20by-NVIDIA%20AI-76b900?style=for-the-badge&logo=nvidia)](https://www.nvidia.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
