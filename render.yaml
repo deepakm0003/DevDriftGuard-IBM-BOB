@@ -18,7 +18,7 @@ services:
       - key: NVIDIA_API_KEY
         sync: false
       - key: MAX_FILES_TO_SCAN
-        value: 100
+        value: 1000
       - key: DEVELOPER_HOURLY_RATE
         value: 50
 
