@@ -1,4 +1,4 @@
-import { AppProvider, useAppStore, useAppDispatch } from './store/appStore';
+import { AppProvider, useAppStore } from './store/appStore';
 import { TopBar } from './components/layout/TopBar';
 import { StatusBar } from './components/layout/StatusBar';
 import { RepoInput } from './components/sidebar/RepoInput';
