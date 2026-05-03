@@ -25,7 +25,7 @@ export function ScanProgress() {
       <div style={{ marginBottom: '16px', textAlign: 'center' }}>
         <Loading small withOverlay={false} />
       </div>
-      
+
       <div style={{
         fontFamily: 'IBM Plex Mono, monospace',
         fontSize: '12px',
@@ -34,15 +34,15 @@ export function ScanProgress() {
       }}>
         Scanning... {scanProgress}%
       </div>
-      
+
       <ProgressBar
         value={scanProgress}
         max={100}
         label="Scan progress"
         hideLabel
-        size="sm"
+        size="small"
       />
-      
+
       <div style={{
         marginTop: '16px',
         maxHeight: '160px',

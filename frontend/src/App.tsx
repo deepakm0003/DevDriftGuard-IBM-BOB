@@ -8,6 +8,7 @@ import { BobChat } from './components/chat/BobChat';
 import { IssueDetail } from './components/detail/IssueDetail';
 import { Dashboard } from './components/dashboard/Dashboard';
 import { Roadmap } from './components/roadmap/Roadmap';
+import { LandingPage } from './components/layout/LandingPage';
 import { Search, Code, Terminal, Layers, Information, Close } from '@carbon/icons-react';
 import { useState } from 'react';
 
@@ -68,7 +69,7 @@ function AboutModal({ onClose }: { onClose: () => void }) {
           
           <h3 style={{ color: '#161616', fontSize: '16px', fontWeight: 600, marginTop: '24px', marginBottom: '12px' }}>Key Features</h3>
           <ul style={{ paddingLeft: '20px', marginBottom: '16px' }}>
-            <li style={{ marginBottom: '8px' }}>Scans up to 100 files per repository</li>
+            <li style={{ marginBottom: '8px' }}>Scans up to 1000 files per repository</li>
             <li style={{ marginBottom: '8px' }}>Calculates ROI and cost savings</li>
             <li style={{ marginBottom: '8px' }}>Visual dashboard with metrics and trends</li>
             <li style={{ marginBottom: '8px' }}>3-week remediation roadmap</li>
@@ -175,68 +176,7 @@ function AppContent() {
 
         {/* Main Content */}
         <div className="main-content">
-          {!scanResult && !isScanning && (
-            <div className="welcome-screen" style={{
-              height: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              textAlign: 'center',
-              maxWidth: '800px',
-              margin: '0 auto',
-              padding: '40px'
-            }}>
-              <div style={{
-                width: '64px',
-                height: '64px',
-                borderRadius: '12px',
-                backgroundColor: 'var(--bg-status-bar)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '32px',
-                fontWeight: 'bold',
-                color: 'white',
-                marginBottom: '24px',
-                boxShadow: '0 8px 24px rgba(15, 98, 254, 0.3)'
-              }}>
-                B
-              </div>
-              <h1 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '12px', color: 'var(--text-primary)' }}>
-                IBM Bob <span style={{ color: 'var(--text-secondary)', fontWeight: 400 }}>DevDriftGuard</span>
-              </h1>
-              <p style={{ fontSize: '15px', color: 'var(--text-secondary)', marginBottom: '40px', lineHeight: '1.6' }}>
-                AI-powered technical debt scanner that analyzes repositories, ranks issues by business impact, and generates ready-to-merge fixes.
-              </p>
-              
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: '20px',
-                width: '100%'
-              }}>
-                {[
-                  { title: 'Deep Scan', desc: 'Security, dead code, and dependencies.' },
-                  { title: 'ROI Analysis', desc: 'Rank issues by business cost.' },
-                  { title: 'Auto-Fix', desc: 'Bob generates ready-to-merge PRs.' }
-                ].map((item, i) => (
-                  <div key={i} style={{
-                    padding: '24px',
-                    backgroundColor: 'var(--bg-card)',
-                    border: '1px solid var(--border-color)',
-                    borderRadius: '8px',
-                    textAlign: 'left',
-                    transition: 'border-color 0.2s',
-                    cursor: 'default'
-                  }}>
-                    <div style={{ fontWeight: 600, marginBottom: '8px', fontSize: '14px', color: 'var(--text-primary)' }}>{item.title}</div>
-                    <div style={{ fontSize: '12px', color: 'var(--text-secondary)', lineHeight: '1.5' }}>{item.desc}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          {!scanResult && !isScanning && <LandingPage />}
           
           {scanResult && !isScanning && activeTab === 'dashboard' && <Dashboard />}
           {scanResult && !isScanning && activeTab === 'roadmap' && <Roadmap />}
@@ -257,12 +197,10 @@ function AppContent() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '24px',
-                  fontWeight: 'bold',
-                  color: 'white',
-                  margin: '0 auto 24px'
+                  margin: '0 auto 24px',
+                  overflow: 'hidden'
                 }}>
-                  B
+                  <img src="/bob-avatar.png" alt="IBM Bob" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <h2 style={{ fontSize: '20px', fontWeight: 500, marginBottom: '8px' }}>
                   Analyzing repository...
@@ -311,6 +249,5 @@ function App() {
 }
 
 export default App;
-
 
 // Made with Bob

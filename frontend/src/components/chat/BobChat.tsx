@@ -137,9 +137,14 @@ export function BobChat() {
               fontWeight: 600,
               color: 'white',
               flexShrink: 0,
-              marginTop: '2px'
+              marginTop: '2px',
+              overflow: 'hidden'
             }}>
-              {msg.role === 'bob' ? 'B' : 'U'}
+              {msg.role === 'bob' ? (
+                <img src="/bob-avatar.png" alt="B" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              ) : (
+                'U'
+              )}
             </div>
             <div style={{ flex: 1 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
@@ -167,7 +172,18 @@ export function BobChat() {
         
         {isChatLoading && (
           <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-            <div style={{ width: '24px', height: '24px', borderRadius: '4px', backgroundColor: 'var(--bg-status-bar)', display: 'flex', alignItems: 'center', justifySelf: 'center', color: 'white', fontSize: '11px', fontWeight: 600 }}>B</div>
+            <div style={{ 
+              width: '24px', 
+              height: '24px', 
+              borderRadius: '4px', 
+              backgroundColor: 'var(--bg-status-bar)', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              overflow: 'hidden' 
+            }}>
+              <img src="/bob-avatar.png" alt="B" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-muted)', fontSize: '12px' }}>
               <div className="typing-dots">
                 <span>.</span><span>.</span><span>.</span>

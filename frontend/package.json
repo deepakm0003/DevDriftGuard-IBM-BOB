@@ -13,6 +13,7 @@
     "@carbon/react": "^1.57.0",
     "@carbon/styles": "^1.105.0",
     "axios": "^1.7.0",
+    "lucide-react": "^1.14.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "recharts": "^2.12.0"
