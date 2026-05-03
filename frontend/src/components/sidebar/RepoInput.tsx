@@ -39,16 +39,19 @@ export function RepoInput() {
 
     const repoName = url.split('/').slice(-2).join('/').replace('.git', '');
 
-    for (let i = 0; i < SCAN_LOGS.length; i++) {
-      await new Promise(resolve => setTimeout(resolve, 300));
+    for (let i = 0; i < SCAN_LOGS.length - 1; i++) {
+      await new Promise(resolve => setTimeout(resolve, 400));
       const log = SCAN_LOGS[i];
       let text = log.text.replace('{repoName}', repoName);
       dispatch({ type: 'ADD_LOG', payload: { type: log.type, text } });
-      dispatch({ type: 'SCAN_PROGRESS', payload: Math.round(((i + 1) / SCAN_LOGS.length) * 100) });
+      dispatch({ type: 'SCAN_PROGRESS', payload: Math.round(((i + 1) / SCAN_LOGS.length) * 85) });
     }
+
+    dispatch({ type: 'ADD_LOG', payload: { type: 'info', text: 'Bob is performing deep architectural analysis (using Llama 3.1 405B)...' } });
 
     try {
       const result = await api.scanRepo(url);
+      dispatch({ type: 'SCAN_PROGRESS', payload: 100 });
       const finalLog = SCAN_LOGS[SCAN_LOGS.length - 1];
       const finalText = finalLog.text.replace('{N}', String(result.issues.length));
       dispatch({ type: 'ADD_LOG', payload: { type: 'ok', text: finalText } });
