@@ -9,16 +9,16 @@ export const config = {
     repo: process.env.GITHUB_REPO || '',
   },
   openai: {
-    apiKey: process.env.OPENAI_API_KEY || '',
-    baseURL: process.env.OPENAI_BASE_URL || undefined,
-    model: process.env.OPENAI_MODEL || 'gpt-4-turbo-preview',
+    apiKey: process.env.OPENAI_API_KEY || process.env.NVIDIA_API_KEY || '',
+    baseURL: process.env.OPENAI_BASE_URL || 'https://integrate.api.nvidia.com/v1',
+    model: process.env.OPENAI_MODEL || 'meta/llama-3.1-405b-instruct',
   },
   server: {
     port: parseInt(process.env.PORT || '3000', 10),
     nodeEnv: process.env.NODE_ENV || 'development',
   },
   analysis: {
-    maxFiles: parseInt(process.env.MAX_FILES_TO_ANALYZE || '1000', 10),
+    maxFiles: parseInt(process.env.MAX_FILES_TO_SCAN || process.env.MAX_FILES_TO_ANALYZE || '1000', 10),
     timeoutMs: parseInt(process.env.ANALYSIS_TIMEOUT_MS || '300000', 10),
   },
 };
