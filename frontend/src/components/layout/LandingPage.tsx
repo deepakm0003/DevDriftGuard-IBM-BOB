@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAppStore, useAppDispatch } from '../../store/appStore';
 import { api } from '../../api/client';
-import { Search, ArrowRight, Code, Security, Flash } from '@carbon/icons-react';
+import { Code, Security, Flash } from '@carbon/icons-react';
 
 const SCAN_LOGS = [
   { type: 'info' as const, text: 'Connecting to IBM Bob (Architect Mode)...' },
@@ -57,12 +57,6 @@ export function LandingPage() {
       const errorMessage = error.response?.data?.error || error.message || 'Scan failed';
       dispatch({ type: 'ADD_LOG', payload: { type: 'error' as any, text: `Error: ${errorMessage}` } });
       dispatch({ type: 'SCAN_ERROR', payload: errorMessage });
-    }
-  };
-
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !isScanning) {
-      handleScan();
     }
   };
 

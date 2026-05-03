@@ -9,7 +9,7 @@ import { IssueDetail } from './components/detail/IssueDetail';
 import { Dashboard } from './components/dashboard/Dashboard';
 import { Roadmap } from './components/roadmap/Roadmap';
 import { LandingPage } from './components/layout/LandingPage';
-import { Search, Code, Terminal, Layers, Information, Close } from '@carbon/icons-react';
+import { Search, Layers, Information, Close } from '@carbon/icons-react';
 import { useState } from 'react';
 
 function ActivityBar({ onAboutClick }: { onAboutClick: () => void }) {
@@ -97,8 +97,7 @@ function AboutModal({ onClose }: { onClose: () => void }) {
 }
 
 function AppContent() {
-  const { isScanning, scanResult, activeTab, selectedIssue } = useAppStore();
-  const dispatch = useAppDispatch();
+  const { isScanning, scanResult, activeTab } = useAppStore();
   const [showAbout, setShowAbout] = useState(false);
   
   const criticalHighCount = scanResult?.issues.filter(i => i.severity === 'critical' || i.severity === 'high').length || 0;

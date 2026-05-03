@@ -17,7 +17,7 @@ export function Dashboard() {
 
   if (!scanResult) {
     return (
-      <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyCenter: 'center', color: 'var(--text-muted)' }}>
+      <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>
         No scan results available.
       </div>
     );
@@ -35,15 +35,6 @@ export function Dashboard() {
   const handleIssueClick = (issue: any) => {
     dispatch({ type: 'SELECT_ISSUE', payload: issue });
     dispatch({ type: 'SET_TAB', payload: 'findings' });
-  };
-
-  const getSeverityColor = (severity: string) => {
-    switch (severity) {
-      case 'critical': return 'var(--accent-red)';
-      case 'high': return 'var(--accent-yellow)';
-      case 'medium': return 'var(--accent-blue)';
-      default: return 'var(--text-muted)';
-    }
   };
 
   return (

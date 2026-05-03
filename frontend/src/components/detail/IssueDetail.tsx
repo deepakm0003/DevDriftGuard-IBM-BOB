@@ -1,4 +1,4 @@
-import { Renew, Chat, View, WarningAlt, CheckmarkOutline, Star, ArrowLeft } from '@carbon/icons-react';
+import { Renew, WarningAlt, CheckmarkOutline, Star } from '@carbon/icons-react';
 import { useAppStore, useAppDispatch } from '../../store/appStore';
 import { api } from '../../api/client';
 
@@ -10,7 +10,6 @@ export function IssueDetail() {
   const fileContent = fullFile?.content || selectedIssue?.snippet || selectedIssue?.problem || '';
   const lineRange = selectedIssue?.line_range || '1';
   const startLineHighlight = parseInt(lineRange.split(/[:-]/)[0]) || 1;
-  const endLineHighlight = parseInt(lineRange.split(/[:-]/)[1]) || startLineHighlight;
   
   // If we have a snippet but no full file, create a simple code display
   const codeLines = fileContent ? fileContent.split('\n') : [];
@@ -517,12 +516,4 @@ export function IssueDetail() {
   );
 }
 
-function Information({ size }: { size: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="currentColor">
-      <path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,26A12,12,0,1,1,28,16,12,12,0,0,1,16,28Z" />
-      <path d="M15,14h2v7H15Zm0-5h2v2H15Z" />
-    </svg>
-  );
-}
 

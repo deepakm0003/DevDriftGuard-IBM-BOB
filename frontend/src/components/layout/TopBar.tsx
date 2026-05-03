@@ -1,7 +1,6 @@
-import { Download, Upload, Information } from '@carbon/icons-react';
+import { Download, Upload } from '@carbon/icons-react';
 import { useAppStore, useAppDispatch } from '../../store/appStore';
 import { api } from '../../api/client';
-import type { ChatMessage } from '../../types';
 
 export function TopBar({ onReset }: { onReset?: () => void }) {
   const { activeTab, fixResult, scanResult, repoUrl, isPushing } = useAppStore();
