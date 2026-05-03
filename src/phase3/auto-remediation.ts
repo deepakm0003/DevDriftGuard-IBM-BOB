@@ -97,9 +97,15 @@ Return ONLY valid JSON with this structure:
       console.log(`Creating PR for ${owner}/${repo} on branch ${baseBranch}`);
       
       // Get authenticated user
-      const { data: user } = await this.octokit.users.getAuthenticated();
-      const currentUser = user.login;
-      console.log(`Authenticated as: ${currentUser}`);
+      let currentUser = '';
+      try {
+        const { data: user } = await this.octokit.users.getAuthenticated();
+        currentUser = user.login;
+        console.log(`Authenticated as: ${currentUser}`);
+      } catch (authError: any) {
+        console.error('GitHub Auth Error:', authError.message);
+        throw new Error(`GitHub Authentication Failed: ${authError.message}. Please check if your GITHUB_TOKEN is valid and has 'repo' and 'user' scopes.`);
+      }
       
       // Check if we own the repository or need to fork
       let targetOwner = owner;
@@ -117,19 +123,19 @@ Return ONLY valid JSON with this structure:
             console.log(`Fork already exists: ${currentUser}/${repo}`);
           } catch {
             // Fork doesn't exist, create it
-            console.log(`Creating fork...`);
+            console.log(`Creating fork for ${owner}/${repo}...`);
             await this.octokit.repos.createFork({
               owner,
               repo,
             });
-            console.log(`Fork created: ${currentUser}/${repo}`);
-            // Wait for fork to be ready
-            await new Promise(resolve => setTimeout(resolve, 3000));
+            console.log(`Fork creation initiated...`);
+            // Wait longer for fork to be ready in production
+            await new Promise(resolve => setTimeout(resolve, 5000));
           }
           targetOwner = currentUser;
         } catch (forkError: any) {
           console.error(`Failed to fork repository:`, forkError.message);
-          throw new Error(`Cannot fork repository. You need write access to create PRs on ${owner}/${repo}, or the repository must allow forks.`);
+          throw new Error(`GitHub Fork Failed: ${forkError.message}. Ensure your GITHUB_TOKEN has 'repo' scope and you haven't hit fork limits.`);
         }
       }
       
