@@ -135,7 +135,7 @@ DevDriftGuard provides a **complete 4-phase technical debt lifecycle**:
 ## ✨ Key Features
 
 ### 🔍 **Intelligent Code Analysis**
-- Scans up to 100 files per repository
+- Scans up to 1000 files per repository
 - Detects 6 categories of technical debt
 - Semantic understanding (not just regex patterns)
 - Context-aware issue detection
@@ -353,7 +353,7 @@ PORT=3000
 NODE_ENV=development
 
 # Optional: Custom Settings
-MAX_FILES_TO_SCAN=100
+MAX_FILES_TO_SCAN=1000
 DEVELOPER_HOURLY_RATE=50
 ```
 
@@ -454,7 +454,7 @@ http://localhost:3000
 **Process:**
 1. **Repository Cloning**
    - Fetches repository structure via GitHub API
-   - Identifies all source files (up to 100 files)
+   - Identifies all source files (up to 1000 files)
    - Filters by file extensions (.js, .ts, .jsx, .tsx, .py, etc.)
 
 2. **Code Extraction**
