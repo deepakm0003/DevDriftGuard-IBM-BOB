@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 });
 
 // Health check
-app.get('/health', (req: Request, res: Response) => {
+app.get('/api/health', (req: Request, res: Response) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
