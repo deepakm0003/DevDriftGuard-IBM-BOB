@@ -12,8 +12,22 @@ import type { RepoConfig, ScanOptions } from './types/index.js';
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: '*', // Allow all for the hackathon demo
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
+
+// Increase timeout for long scans (5 minutes)
+app.use((req, res, next) => {
+  res.setTimeout(300000, () => {
+    console.log('Request has timed out.');
+    res.status(408).send('Request has timed out');
+  });
+  next();
+});
 
 // Health check
 app.get('/health', (req: Request, res: Response) => {
