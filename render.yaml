@@ -42,5 +42,11 @@ services:
       - type: rewrite
         source: /*
         destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: devdriftguard-backend
+          property: url
 
 # Made with Bob
