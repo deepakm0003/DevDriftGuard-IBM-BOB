@@ -34,7 +34,6 @@ https://devdriftguard-ibm-bob.onrender.com/
 - [IBM Bob Integration](#-ibm-bob-integration)
 - [API Documentation](#-api-documentation)
 - [Deployment](#-deployment)
-- [Screenshots](#-screenshots)
 - [Contributing](#-contributing)
 - [License](#-license)
 
@@ -966,34 +965,6 @@ NVIDIA_API_KEY=your_nvidia_api_key
 # Frontend (.env.production)
 VITE_API_URL=https://your-backend-url.com
 ```
-
----
-
-## 📸 Screenshots
-
-### 1. Scan Progress
-![Scan Progress](docs/screenshots/scan-progress.png)
-*Real-time scanning with detailed logs*
-
-### 2. Issue Detail View
-![Issue Detail](docs/screenshots/issue-detail.png)
-*Comprehensive issue analysis with DCS scoring*
-
-### 3. Auto-Fix Generation
-![Auto-Fix](docs/screenshots/auto-fix.png)
-*IBM Bob generates production-ready fixes*
-
-### 4. Dashboard
-![Dashboard](docs/screenshots/dashboard.png)
-*Executive metrics and analytics*
-
-### 5. Roadmap
-![Roadmap](docs/screenshots/roadmap.png)
-*3-week sprint planning*
-
-### 6. PDF Report
-![PDF Report](docs/screenshots/pdf-report.png)
-*Professional reports for stakeholders*
 
 ---
 
